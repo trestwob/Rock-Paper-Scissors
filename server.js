@@ -10,7 +10,7 @@ const requestListener = (req, res) => {
     let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
     const extname = path.extname(filePath);
     let contentType = 'text/html';
-
+    let charset = 'utf-8';
     switch (extname) {
         case '.js':
             contentType = 'text/javascript';
@@ -29,7 +29,11 @@ const requestListener = (req, res) => {
             break;
     }
 
-    fs.readFile(filePath, (err, content) => {
+    if (extname === '.html') {
+        contentType = 'text/html';
+    }
+
+    fs.readFile(filePath, 'utf-8', (err, content) => {
         if (err) {
             if (err.code === 'ENOENT') {
                 res.writeHead(404, { 'Content-Type': 'text/html' });
@@ -39,7 +43,7 @@ const requestListener = (req, res) => {
                 res.end('Server Error');
             }
         } else {
-            res.writeHead(200, { 'Content-Type': contentType });
+            res.writeHead(200, { 'Content-Type': `${contentType}; charset=${charset}` });
             res.end(content, 'utf8');
         }
     });
