@@ -75,4 +75,55 @@ h1 {
 
 
 
+.scores {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed;
+    top: 10;
+    right: 10%;
+}
 
+/* Title styling */
+.scores p:first-of-type {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Score span styling */
+.scores .score {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50; /* Green color for scores */
+    margin-top: 10px;
+}
+
+/* Button styling */
+.scores button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #fc6c85; /* Blue color for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.scores button:hover {
+    background-color: #FFE4E7; /* Darker blue on hover */
+    color: #170b0d;
+}
+
+
+.scores button:focus {
+    outline: none;
+}
