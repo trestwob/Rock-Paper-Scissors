@@ -1,29 +1,23 @@
-function result(value) {
-  var finalResult = "";
-  let text = document.getElementById("button").textContent;
-  //console.log(text);
-  if (text == value) {
-    finalResult = "You win 😃";
-    document.getElementById("p2").innerHTML = `System: ${value}`;
-    document.getElementById("p3").innerHTML = finalResult;
-  } else {
-    finalResult = "You lose 😆";
-    document.getElementById("p2").innerHTML = `System: ${value}`;
-    document.getElementById("p3").innerHTML = finalResult;
-  }
-}
-function game() {
-  const number = Math.random();
-  var value = "";
-  if (number < 1 / 3) {
-    value = "Paper";
-    result(value);
-  } else if (number > 1 / 3 && number < 2 / 3) {
-    value = "Rock";
-    result(value);
-  } else {
-    value = "Scirrors";
-    result(value);
-  }
-  console.log(value);
+function game(input) {
+    const choices = ['rock', 'paper', 'scissors'];
+    const randNumber = Math.floor(Math.random() * choices.length);
+//    console.log(randNumber);
+    let value = choices[randNumber];
+//    console.log(value);
+    const possibleOutcomes = {
+        rock : 'scissors',
+        paper: 'rock',
+        scissors: 'paper'
+    };
+
+//    console.log(possibleOutcomes[input]);
+
+    const result = input === value ? 'Draw 😳' : possibleOutcomes[input] === value ? 'You win.🤫' : 'You lose. 😂';
+    // it's like , if input === value return true, then it's a draw, else if possible outcomes === value return true then win or else lose 
+    // possible outcomes is a dictionary and accessing the values with the input value 
+    // input value is directly passed from the onclick function 
+
+
+    document.getElementById("p2").textContent = `System: ${value}`;
+    document.getElementById("p3").textContent = result;
 }
